@@ -1,7 +1,7 @@
 var maxCircleSize = 20;
 var speed = 0.03;
 var numRows = 10;
-var numCols = 20;
+var numCols = 16;
 var numStrands = 2;
 var phase,
     leftMargin, 

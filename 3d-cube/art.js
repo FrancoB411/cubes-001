@@ -2,7 +2,9 @@ var speed = 0.01;
 var numCubes = 12;
 
 function setup(){
-    createCanvas(displayWidth, displayHeight, WEBGL);
+  var width = window.innerWidth;
+  var height = window.innerHeight;
+    createCanvas(width, height, WEBGL);
 }
 
 function draw(){

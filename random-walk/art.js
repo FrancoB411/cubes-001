@@ -4,6 +4,13 @@ var vel = 0.5;
 var particle;
 var noiseSeed;
 
+console.log("I exist");
+
+if !(feature.canvas && feature.webGL) {
+    console.log("Canvas and WebGL are NOT supported")
+} else {
+    console.log("good to go")
+}
 
 function setup() {
   height = window.innerHeight;

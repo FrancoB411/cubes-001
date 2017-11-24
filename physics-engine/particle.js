@@ -10,10 +10,11 @@ function Particle(x, y, mass) {
   this.velocity = createVector(0, 0);
   this.acceleration = createVector(0, 0);
   this.mass = mass;
+  this.radius = massToRadius(mass);
 
   this.display = function() {
     noStroke();
-    ellipse(this.position.x, this.position.y, 50, 50);
+    ellipse(this.position.x, this.position.y, this.radius, this.radius);
     this.position.add(this.velocity.add(this.acceleration));
     this.edges();
     this.acceleration.set(0,0);
@@ -46,5 +47,12 @@ function Particle(x, y, mass) {
       this.velocity.y *= -1;
       this.position.y = height;
     }
+  }
+
+  function massToRadius(mass) {
+    // Volume of a circle: V = pi*r^3
+    // let V = mass so we have a constant density 
+    // derives radius based on volume
+    return Math.cbrt(1/(((4/3)*Math.PI)/mass))*50;
   }
 }

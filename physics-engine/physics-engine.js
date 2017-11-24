@@ -16,9 +16,14 @@ function setup() {
 
 function draw() {
   background(4, 58, 74);
+
+  // Gravity is scaled according to mass
   var gravity1 = createVector(0, 0.1*particle1.mass);
   var gravity2 = createVector(0, 0.1*particle2.mass);
+
+  // Wind is not
   var wind = createVector(0.1, 0);
+
   particle1.applyForce(gravity1.add(wind));
   particle2.applyForce(gravity2.add(wind));
   particle1.display();

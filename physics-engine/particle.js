@@ -53,6 +53,7 @@ function Particle(x, y, mass) {
     // Volume of a circle: V = pi*r^3
     // let V = mass so we have a constant density 
     // derives radius based on volume
+    // Multiply by 50 so it looks reasonable in a browser
     return Math.cbrt(1/(((4/3)*Math.PI)/mass))*50;
   }
 }

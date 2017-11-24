@@ -38,17 +38,29 @@ function Particle(x, y, mass) {
   }
 
   this.edges = function() {
-    var edgeWidth = width - this.radius/2;
-    var edgeHeight = height - this.radius/2;
+    var leftEdge = 0 + this.radius/2;
+    var rightEdge = width - this.radius/2;
+    var bottomEdge = height - this.radius/2;
+    var topEdge = 0 + this.radius/2;
 
-    if (this.position.x > edgeWidth) { 
+    if (this.position.x > rightEdge) { 
       reverse(this.velocity, "x");
-      this.position.x = edgeWidth;
+      this.position.x = rightEdge;
     }
 
-    if (this.position.y > edgeHeight) { 
+    if (this.position.x < leftEdge) { 
+      reverse(this.velocity, "x");
+      this.position.x = leftEdge;
+    }
+
+    if (this.position.y > bottomEdge) { 
       reverse(this.velocity, "y");
-      this.position.y = edgeHeight; 
+      this.position.y = bottomEdge; 
+    }
+
+    if (this.position.y < topEdge) { 
+      reverse(this.velocity, "y");
+      this.position.y = topEdge; 
     }
   }
 

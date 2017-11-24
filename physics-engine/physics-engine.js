@@ -9,8 +9,8 @@ function setup() {
   height = window.innerHeight;
   width = window.innerWidth;
   createCanvas(width, height);
-  particle1 = new Particle(width*(1/3), height/2);
-  particle2 = new Particle(width*(2/3), height/2);
+  particle1 = new Particle(width*(1/3), height/2, 1/2);
+  particle2 = new Particle(width*(2/3), height/2, 2);
   noiseSeed = 0;
 }
 

@@ -5,10 +5,11 @@
 // M: Mass
 // A: Acceleration
 
-function Particle(x, y) {
+function Particle(x, y, mass) {
   this.position = createVector(x, y);
   this.velocity = createVector(0, 0);
   this.acceleration = createVector(0, 0);
+  this.mass = mass;
 
   this.display = function() {
     noStroke();
@@ -30,6 +31,8 @@ function Particle(x, y) {
   }
 
   this.applyForce = function(force) {
+    force = force.copy();
+    force.div(mass);
     this.acceleration.add(force);
   }
 

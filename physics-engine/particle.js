@@ -38,14 +38,14 @@ function Particle(x, y, mass) {
   }
 
   this.edges = function() {
-    if (this.position.x > width) { 
+    if (this.position.x > width - this.radius/2) { 
       this.velocity.x *= -1;
-      this.position.x = width;
+      this.position.x = width - this.radius/2;
     }
 
-    if (this.position.y > height) { 
+    if (this.position.y > height - this.radius/2) { 
       this.velocity.y *= -1;
-      this.position.y = height;
+      this.position.y = height - this.radius/2;
     }
   }
 

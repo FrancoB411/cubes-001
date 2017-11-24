@@ -38,14 +38,17 @@ function Particle(x, y, mass) {
   }
 
   this.edges = function() {
-    if (this.position.x > width - this.radius/2) { 
-      this.velocity.x *= -1;
-      this.position.x = width - this.radius/2;
+    var edgeWidth = width - this.radius/2;
+    var edgeHeight = height - this.radius/2;
+
+    if (this.position.x > edgeWidth) { 
+      reverse(this.velocity, "x");
+      this.position.x = edgeWidth;
     }
 
-    if (this.position.y > height - this.radius/2) { 
-      this.velocity.y *= -1;
-      this.position.y = height - this.radius/2;
+    if (this.position.y > edgeHeight) { 
+      reverse(this.velocity, "y");
+      this.position.y = edgeHeight; 
     }
   }
 
@@ -55,5 +58,9 @@ function Particle(x, y, mass) {
     // derives radius based on volume
     // Multiply by 50 so it looks reasonable in a browser
     return Math.cbrt(1/(((4/3)*Math.PI)/mass))*50;
+  }
+
+  function reverse(vector, axis) {
+    vector[axis] *= -1;
   }
 }

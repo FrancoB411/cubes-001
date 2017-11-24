@@ -15,7 +15,9 @@ function setup() {
 function draw() {
   background(4, 58, 74);
   var gravity = createVector(0, 0.1);
+  var wind = createVector(0.2, 0);
   particle.applyForce(gravity);
+  particle.applyForce(wind);
   particle.display();
   particle.update();
 }

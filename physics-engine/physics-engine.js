@@ -14,7 +14,7 @@ function setup() {
 
 function draw() {
   background(4, 58, 74);
-  var gravity = createVector(random(-1, 1), 0.01);
+  var gravity = createVector(0, 0.1);
   particle.applyForce(gravity);
   particle.display();
   particle.update();

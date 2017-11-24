@@ -21,11 +21,9 @@ function draw() {
   var gravity1 = createVector(0, 0.1*particle1.mass);
   var gravity2 = createVector(0, 0.1*particle2.mass);
 
-  // Wind is not
-  var wind = createVector(0.1, 0);
 
-  particle1.applyForce(gravity1.add(wind));
-  particle2.applyForce(gravity2.add(wind));
+  particle1.applyForce(gravity1);
+  particle2.applyForce(gravity2);
   particle1.display();
   particle2.display();
 }
@@ -35,7 +33,9 @@ function randomColor() {
 }
 
 function mousePressed() {
-  particle1.resetPosition();
-  particle2.resetPosition();
+  // Wind is not scaled by mass
+  var wind = createVector(0.5, 0);
+  particle1.applyForce(wind);
+  particle2.applyForce(wind);
 }
 

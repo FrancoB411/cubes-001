@@ -1,14 +1,16 @@
 var position;
 var acc = 15;
 var vel = 0.5;
-var particle;
+var particle1;
+var particle2;
 var noiseSeed;
 
 function setup() {
   height = window.innerHeight;
   width = window.innerWidth;
   createCanvas(width, height);
-  particle = new Particle();
+  particle1 = new Particle(width*(1/3), height/2);
+  particle2 = new Particle(width*(2/3), height/2);
   noiseSeed = 0;
 }
 
@@ -16,10 +18,10 @@ function draw() {
   background(4, 58, 74);
   var gravity = createVector(0, 0.1);
   var wind = createVector(0.2, 0);
-  particle.applyForce(gravity);
-  particle.applyForce(wind);
-  particle.display();
-  particle.update();
+  particle1.applyForce(gravity.add(wind));
+  particle2.applyForce(gravity.add(wind));
+  particle1.display();
+  particle2.display();
 }
 
 function randomColor() { 
@@ -27,6 +29,7 @@ function randomColor() {
 }
 
 function mousePressed() {
-  particle.resetPosition();
+  particle1.resetPosition();
+  particle2.resetPosition();
 }
 

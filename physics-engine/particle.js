@@ -5,8 +5,8 @@
 // M: Mass
 // A: Acceleration
 
-function Particle() {
-  this.position = createVector(width/2, height/2);
+function Particle(x, y) {
+  this.position = createVector(x, y);
   this.velocity = createVector(0, 0);
   this.acceleration = createVector(0, 0);
 
@@ -15,7 +15,8 @@ function Particle() {
     ellipse(this.position.x, this.position.y, 50, 50);
     this.position.add(this.velocity.add(this.acceleration));
     this.edges();
-    this.acceleration = createVector(0,0);
+    this.acceleration.set(0,0);
+    this.update();
     return this;
   }
 

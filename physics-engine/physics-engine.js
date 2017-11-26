@@ -11,7 +11,12 @@ function setup() {
   createCanvas(width, height);
   particle1 = new Particle(width*(1/3), height/2, 1/2);
   particle2 = new Particle(width*(2/3), height/2, 20);
+  universe = new Universe(width, height);
+  universe.addObject(particle1);
+  universe.addObject(particle2);
   noiseSeed = 0;
+  console.log(universe.objects);
+  console.log(particle2.constraints);
 }
 
 function draw() {

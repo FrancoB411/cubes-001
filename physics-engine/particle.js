@@ -24,7 +24,7 @@ function Particle(x, y, mass) {
     noStroke();
     ellipse(this.position.x, this.position.y, this.radius, this.radius);
     this.position.add(this.velocity.add(this.acceleration));
-    this.edges();
+    this.constrainToUniverse();
     this.acceleration.set(0,0);
     this.update();
     return this;
@@ -45,11 +45,15 @@ function Particle(x, y, mass) {
     this.acceleration.add(force);
   }
 
-  this.edges = function() {
-    var leftEdge = 0 + this.radius/2;
-    var rightEdge = width - this.radius/2;
-    var bottomEdge = height - this.radius/2;
-    var topEdge = 0 + this.radius/2;
+  this.applyUniverse = function(constraints) {
+    this.constraints = constraints;
+  }
+
+  this.constrainToUniverse = function() {
+    var leftEdge = this.constraints.leftEdge + this.radius/2;
+    var rightEdge = this.constraints.rightEdge - this.radius/2;
+    var bottomEdge = this.constraints.bottomEdge - this.radius/2;
+    var topEdge = this.constraints.topEdge + this.radius/2;
 
     if (this.position.x > rightEdge) { 
       reverse(this.velocity, "x");
@@ -83,4 +87,26 @@ function Particle(x, y, mass) {
   function reverse(vector, axis) {
     vector[axis] *= -1;
   }
+}
+
+function Aattractor(x, y, mass) {
+  this.position = createVector(x, y);
+}
+
+function Universe(width, height) {
+  this.width = width;
+  this.height = height;
+  this.objects = [];
+
+  this.addObject =  function(obj) {
+    obj.applyUniverse(this.constraints);
+    this.objects.push(obj);
+  }
+
+  this.constraints = {
+    leftEdge : 0, 
+    rightEdge : this.width,
+    bottomEdge : this.height,
+    topEdge : 0 
+  };
 }

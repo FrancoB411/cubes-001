@@ -5,6 +5,14 @@
 // M: Mass
 // A: Acceleration
 
+// Gravity
+// Fg = m1 * m1*G / distance^2
+// where:
+// Fg: Gravity
+// m1: mass 1 object
+// m2: mass 2 object
+// distance: distance between the two objects
+
 function Particle(x, y, mass) {
   this.position = createVector(x, y);
   this.velocity = createVector(0, 0);

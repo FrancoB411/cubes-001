@@ -8,6 +8,12 @@ function Universe(width, height) {
     this.objects.push(obj);
   }
 
+  this.addObjects = function(objects) {
+    for(i = 0; i < objects.length; i++) {
+      this.addObject(objects[i]);
+    }
+  }
+
   this.constraints = {
     leftEdge : 0, 
     rightEdge : this.width,

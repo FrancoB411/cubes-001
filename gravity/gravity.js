@@ -14,11 +14,8 @@ function setup() {
   particle1 = new Particle(width*(1/3), height/2, 1/2);
   particle2 = new Particle(width*(2/3), height/2, 5);
   universe = new Universe(width, height);
-  universe.addObject(particle1);
-  universe.addObject(particle2);
-  noiseSeed = 0;
+  universe.addObjects([particle1, particle2]);
   console.log(universe.objects);
-  console.log(particle2.constraints);
 }
 
 function draw() {
@@ -32,10 +29,6 @@ function draw() {
   particle1.display();
   particle2.display();
   attractor.display();
-}
-
-function randomColor() { 
-  return noise(noiseSeed * random(0, 0.01)) * 255; 
 }
 
 function mousePressed() {
